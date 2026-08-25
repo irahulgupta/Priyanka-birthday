@@ -32,8 +32,8 @@ const birthdayConfig = {
   music:  "assets/birthday-music.mp3",      // 👈 background song
   gallery: [                                // 👈 memory photos (add/remove freely)
     { src: "assets/photo1.jpg", caption: "Meta Dayyy... 😄" },
-    { src: "assets/photo2.jpg", caption: "Certified good times ✨" },
-    { src: "assets/photo3.jpg", caption: "Blurry- Rapido rides 😂" },
+    { src: "assets/photo2.jpg", caption: "Blurry- Rapido rides 😂" },
+    { src: "assets/photo3.jpg", caption: "Certified good times ✨" },
     { src: "assets/photo4.jpg", caption: "Sunset at C5 🥳" }
   ],
 
