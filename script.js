@@ -39,12 +39,12 @@ const birthdayConfig = {
 
   /* ---- 4. THE FUNNY CARDS --------------------------------------------- */
   traits: [
-    { emoji: "😂", label: "Professional Trouble Maker", note: "Licensed. Insured. Unstoppable." },
-    { emoji: "🍕", label: "Pizza Enthusiast",           note: "Pineapple debate still pending." },
-    { emoji: "😎", label: "Too Cool for Normal People", note: "We're honoured to know you." },
-    { emoji: "💤", label: "Sleep Champion",             note: "Undefeated since birth." },
-    { emoji: "🤣", label: "Makes Everyone Laugh",       note: "Even on Monday mornings." },
-    { emoji: "🏆", label: "Certified Awesome Human",    note: "Certificate framed. Obviously." }
+    { emoji: "🍻", label: "Beer Paglu",                 note: "Sunday ho ya Monday, beer is mandatory!" },
+    { emoji: "🚩", label: "Walking Red Flag",           note: "But somehow still adorable." },
+    { emoji: "📸", label: "Selfie Scientist",           note: "47 photos. Still choosing the first one." },
+    { emoji: "💃", label: "Weekend Princess",           note: "Always ready with some plans." },
+    { emoji: "🤣", label: "Banter Partner.     ",       note: "Vibing, roasting, repeating" },
+    { emoji: "🍽️", label: "Professional Food Tester",   note: "Knows every spot/cafe/restro in town" }
   ],
 
   /* ---- 5. LITTLE EXTRAS ----------------------------------------------- */
