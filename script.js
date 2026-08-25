@@ -31,10 +31,10 @@ const birthdayConfig = {
   video:  "assets/birthday-video.mp4",      // 👈 the surprise video
   music:  "assets/birthday-music.mp3",      // 👈 background song
   gallery: [                                // 👈 memory photos (add/remove freely)
-    { src: "assets/photo1.jpg", caption: "That one time... 😄" },
+    { src: "assets/photo1.jpg", caption: "Meta Dayyy... 😄" },
     { src: "assets/photo2.jpg", caption: "Certified good times ✨" },
-    { src: "assets/photo3.jpg", caption: "No context needed 😂" },
-    { src: "assets/photo4.jpg", caption: "More of this, please 🥳" }
+    { src: "assets/photo3.jpg", caption: "Blurry- Rapido rides 😂" },
+    { src: "assets/photo4.jpg", caption: "Sunset at C5 🥳" }
   ],
 
   /* ---- 4. THE FUNNY CARDS --------------------------------------------- */
