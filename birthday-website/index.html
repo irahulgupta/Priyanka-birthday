@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" class="is-locked">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#12002e" />
+<meta name="description" content="A little birthday surprise, made with love." />
+<title>A Birthday Surprise 🎉</title>
+
+<!-- Fonts are optional: if you are offline, the system font stack takes over. -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Pacifico&display=swap"
+  rel="stylesheet"
+/>
+
+<link rel="stylesheet" href="style.css" />
+
+<!-- If JavaScript is unavailable, skip the intro and show the whole page. -->
+<noscript>
+  <style>
+    #welcome { display: none !important; }
+    #party[hidden] { display: block !important; }
+    [data-reveal] { opacity: 1 !important; transform: none !important; }
+    html.is-locked, body.is-locked { overflow: visible !important; }
+  </style>
+</noscript>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%82%3C/text%3E%3C/svg%3E" />
+</head>
+
+<body class="is-locked">
+
+  <!-- ============================================================
+       BACKGROUND LAYERS (decorative only)
+       ============================================================ -->
+  <div class="bg-aurora" aria-hidden="true">
+    <span class="blob blob--1"></span>
+    <span class="blob blob--2"></span>
+    <span class="blob blob--3"></span>
+  </div>
+  <div class="bg-stars" aria-hidden="true"></div>
+  <div id="particleLayer" class="particle-layer" aria-hidden="true"></div>
+  <div id="balloonLayer" class="balloon-layer" aria-hidden="true"></div>
+  <div id="emojiLayer" class="emoji-layer" aria-hidden="true"></div>
+
+  <!-- Confetti / fireworks are drawn here -->
+  <canvas id="fxCanvas" class="fx-canvas" aria-hidden="true"></canvas>
+
+  <!-- Screen-reader + keyboard helper -->
+  <a class="skip-link" href="#party">Skip the intro and go to the birthday page</a>
+
+  <!-- ============================================================
+       FLOATING MUSIC BUTTON
+       ============================================================ -->
+  <button id="musicBtn" class="music-btn" type="button" aria-pressed="false"
+          aria-label="Turn background music on">
+    <span class="music-btn__icon" aria-hidden="true">🎵</span>
+    <span class="music-btn__label">Music Off</span>
+    <span class="music-btn__waves" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+  </button>
+
+  <!-- PLACE YOUR MUSIC HERE →  assets/birthday-music.mp3 -->
+  <audio id="bgMusic" loop preload="none"></audio>
+
+
+  <!-- ============================================================
+       STAGE 1 — WELCOME SCREEN
+       ============================================================ -->
+  <section id="welcome" class="welcome" aria-labelledby="welcomeTitle">
+    <div class="welcome__inner">
+      <p class="welcome__kicker">🎉 <span>Psst... come closer</span> 🎉</p>
+
+      <h1 id="welcomeTitle" class="welcome__title">
+        Hey <span class="grad-text" data-friend-name>Priyanka</span>!
+      </h1>
+
+      <p class="welcome__sub">
+        Someone has a <em>special surprise</em> waiting for you...
+        <span class="wobble" aria-hidden="true">🎁</span>
+      </p>
+
+      <button id="openBtn" class="btn-gift" type="button">
+        <span class="btn-gift__shine" aria-hidden="true"></span>
+        <span class="btn-gift__text">Open Your Surprise 🎁</span>
+      </button>
+
+      <p class="welcome__hint">(go on, tap it — it does not bite)</p>
+    </div>
+
+    <div class="welcome__floaties" aria-hidden="true">
+      <span>🎈</span><span>🎂</span><span>✨</span><span>🎊</span><span>💜</span><span>🥳</span>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       THE PARTY (revealed after the gift button is clicked)
+       ============================================================ -->
+  <main id="party" class="party" hidden>
+
+    <!-- ---------- STAGE 2 — HERO ---------- -->
+    <section class="hero section" aria-labelledby="heroTitle">
+      <div class="hero__glow" aria-hidden="true"></div>
+
+      <div class="photo-frame" data-reveal>
+        <div class="photo-frame__ring" aria-hidden="true"></div>
+        <div class="photo-frame__spark" aria-hidden="true"></div>
+        <!-- PLACE YOUR FRIEND'S PHOTO HERE →  assets/friend.jpg
+             (the real file is loaded by script.js from birthdayConfig.photo;
+             this inline gradient is just a safe starting pixel so the page
+             never shows a broken image icon) -->
+        <img
+          id="friendPhoto"
+          class="photo-frame__img"
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Crect width='8' height='8' fill='%238b5cf6'/%3E%3C/svg%3E"
+          alt="A photo of the birthday star"
+          decoding="async"
+        />
+      </div>
+
+      <h2 id="heroTitle" class="hero__title" data-reveal data-delay="1">
+        🎂 Happy Birthday, <span class="grad-text" data-friend-name>Priyanka</span>! 🎂
+      </h2>
+
+      <p class="hero__sub" data-reveal data-delay="2" data-hero-subtitle>
+        Today is all about celebrating YOU! ❤️
+      </p>
+
+      <div class="hero__badges" data-reveal data-delay="3" aria-hidden="true">
+        <span class="chip">🎁 One of a kind</span>
+        <span class="chip">✨ Level up</span>
+        <span class="chip">🎉 Party mode</span>
+      </div>
+
+      <div class="scroll-cue" data-reveal data-delay="4" aria-hidden="true">
+        <span>keep scrolling</span>
+        <i></i>
+      </div>
+    </section>
+
+
+    <!-- ---------- STAGE 3 — PERSONAL MESSAGE ---------- -->
+    <section class="section" aria-labelledby="msgTitle">
+      <h2 id="msgTitle" class="section__title" data-reveal>
+        A Little Note For You 💌
+      </h2>
+
+      <article class="glass card-message" data-reveal data-delay="1">
+        <span class="card-message__quote" aria-hidden="true">“</span>
+        <!-- The text of this message lives in birthdayConfig.message inside script.js -->
+        <p id="typedMessage" class="typed" aria-hidden="true"></p>
+        <p id="typedMessageA11y" class="sr-only" aria-live="polite"></p>
+        <footer class="card-message__sign">
+          — with love, <span data-your-name>Rahul</span> 💜
+        </footer>
+      </article>
+    </section>
+
+
+    <!-- ---------- STAGE 4 — THINGS WE LOVE ---------- -->
+    <section class="section" aria-labelledby="loveTitle">
+      <h2 id="loveTitle" class="section__title" data-reveal>
+        Things We Love About You ❤️
+      </h2>
+      <p class="section__lead" data-reveal data-delay="1">
+        Scientifically proven. Peer reviewed. Zero refunds.
+      </p>
+
+      <!-- Cards are generated from birthdayConfig.traits inside script.js -->
+      <ul id="traitGrid" class="trait-grid" role="list"></ul>
+    </section>
+
+
+    <!-- ---------- STAGE 5 — PHOTO MEMORIES ---------- -->
+    <section class="section" aria-labelledby="galleryTitle">
+      <h2 id="galleryTitle" class="section__title" data-reveal>
+        Photo Memories 📸
+      </h2>
+      <p class="section__lead" data-reveal data-delay="1">
+        Tap any photo to make it bigger. Yes, even that one.
+      </p>
+
+      <!-- PLACE YOUR GALLERY PHOTOS HERE → assets/photo1.jpg ... photo4.jpg
+           (missing files are skipped automatically) -->
+      <div id="gallery" class="gallery"></div>
+      <p id="galleryEmpty" class="empty-note glass" hidden>
+        📷 No photos in the <code>assets/</code> folder yet — drop in
+        <code>photo1.jpg</code> to <code>photo4.jpg</code> and they will show up here.
+      </p>
+    </section>
+
+
+    <!-- ---------- STAGE 6 — BIRTHDAY VIDEO ---------- -->
+    <section class="section" aria-labelledby="videoTitle">
+      <h2 id="videoTitle" class="section__title" data-reveal>
+        🎬 A Little moments of us
+      </h2>
+
+      <div class="video-wrap" data-reveal data-delay="1">
+        <span class="video-wrap__deco video-wrap__deco--tl" aria-hidden="true">🎈</span>
+        <span class="video-wrap__deco video-wrap__deco--tr" aria-hidden="true">✨</span>
+        <span class="video-wrap__deco video-wrap__deco--bl" aria-hidden="true">🎊</span>
+        <span class="video-wrap__deco video-wrap__deco--br" aria-hidden="true">🎁</span>
+
+        <div class="video-shell glass">
+          <!-- PLACE YOUR VIDEO HERE →  assets/birthday-video.mp4 -->
+          <video id="birthdayVideo" class="video" controls playsinline preload="metadata"></video>
+
+          <div id="videoFallback" class="video-fallback" hidden>
+            <span class="video-fallback__emoji" aria-hidden="true">🎬</span>
+            <h3>The video is still wrapping itself up</h3>
+            <p>
+              Drop a file named <code>birthday-video.mp4</code> into the
+              <code>assets/</code> folder and it will play right here.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ---------- STAGE 7 — BIG CELEBRATION ---------- -->
+    <section id="celebration" class="section section--celebrate" aria-labelledby="bigTitle">
+      <h2 id="bigTitle" class="big-title" data-reveal>
+        🎉 HAPPY BIRTHDAY <span class="grad-text" data-friend-name>Priyanka</span>! 🎉
+      </h2>
+
+      <p class="section__lead" data-reveal data-delay="1">
+        Press the button. Make a mess. It is your day.
+      </p>
+
+      <button id="celebrateBtn" class="btn-celebrate" data-reveal data-delay="2" type="button">
+        <span aria-hidden="true">🎉</span> CELEBRATE! <span aria-hidden="true">🎉</span>
+      </button>
+
+      <p id="celebrateCount" class="celebrate-count" aria-live="polite"></p>
+    </section>
+
+
+    <!-- ---------- STAGE 8 — FINAL MESSAGE ---------- -->
+    <section class="section section--final" aria-labelledby="finalTitle">
+      <div class="glass card-final" data-reveal>
+        <p class="card-final__line">
+          Here's to another year of crazy adventures, great memories,
+          and unforgettable moments! ❤️
+        </p>
+        <h2 id="finalTitle" class="card-final__title">
+          Happy Birthday, <span class="grad-text" data-friend-name>Priyanka</span>! 🥳
+        </h2>
+      </div>
+
+      <footer class="made-by">
+        Made with ❤️ by <span data-your-name>Rahul Gupta</span>
+      </footer>
+    </section>
+  </main>
+
+
+  <!-- ============================================================
+       LIGHTBOX
+       ============================================================ -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true"
+       aria-label="Enlarged photo" hidden>
+    <button id="lightboxClose" class="lightbox__btn lightbox__close" type="button"
+            aria-label="Close photo">✕</button>
+    <button id="lightboxPrev" class="lightbox__btn lightbox__nav lightbox__nav--prev" type="button"
+            aria-label="Previous photo">‹</button>
+    <img id="lightboxImg" class="lightbox__img" src="" alt="" />
+    <button id="lightboxNext" class="lightbox__btn lightbox__nav lightbox__nav--next" type="button"
+            aria-label="Next photo">›</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
